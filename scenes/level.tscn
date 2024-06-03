@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://jxa5g7x6hifn" path="res://assets/third_party/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/water frames/Water.png" id="1_boikg"]
 [ext_resource type="Texture2D" uid="uid://coqi033i5kx4x" path="res://assets/third_party/Sprout Lands - Sprites - premium pack/Tilesets/ground tiles/New tiles/Soil_Ground_Tiles.png" id="2_68cel"]
-[ext_resource type="PackedScene" uid="uid://c0fqvibyqmefm" path="res://scenes/top_down_character.tscn" id="3_lwldx"]
+[ext_resource type="PackedScene" uid="uid://c0fqvibyqmefm" path="res://scenes/player.tscn" id="3_lwldx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jva1p"]
 texture = ExtResource("1_boikg")
