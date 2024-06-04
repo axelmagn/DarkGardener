@@ -1,6 +1,8 @@
 extends TopDownCharacter
 
 @onready var _sprite = $AnimatedSprite2D
+# TODO(axelmagn): decouple this by injecting from outside
+@onready var _terrain: Terrain = get_parent().get_node("Terrain")
 
 var _anim_dir = "down"
 var _anim_action = "idle"
@@ -16,6 +18,10 @@ func _process(_delta: float):
 	var vert_dir = Input.get_axis("move_down", "move_up")
 	var move_dir = horiz_dir * Vector2.RIGHT + vert_dir * Vector2.UP
 	set_move_input(move_dir)
+
+	# Handle interact
+	if Input.is_action_just_pressed("interact"):
+		_terrain.till(global_position)
 
 func _on_started_moving():
 	_update_animations()
