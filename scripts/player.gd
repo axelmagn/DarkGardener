@@ -21,7 +21,7 @@ func _process(_delta: float):
 
 	# Handle interact
 	if Input.is_action_just_pressed("interact"):
-		_terrain.till(global_position)
+		_terrain.try_add_grass(global_position)
 
 func _on_started_moving():
 	_update_animations()

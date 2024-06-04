@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmdtw"]
 radius = 3.5
-height = 13.0
+height = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6mxr"]
 atlas = ExtResource("1_6284q")
@@ -506,10 +506,10 @@ spur_time = 0.05
 brake_time = 0.02
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_fmdtw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_w85lb")
 animation = &"walk_left"
 autoplay = "idle_down"
