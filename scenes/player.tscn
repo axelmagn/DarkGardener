@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bvl4rxj7ctia8" path="res://assets/third_party/Sprout Lands - Sprites - premium pack/Characters/Premium Charakter Spritesheet.png" id="1_6284q"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rsbih"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vwn4"]
-size = Vector2(10, 13)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmdtw"]
+radius = 3.5
+height = 13.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6mxr"]
 atlas = ExtResource("1_6284q")
@@ -498,6 +499,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_rsbih")
 max_speed = 64.0
 spur_time = 0.05
@@ -505,9 +507,13 @@ brake_time = 0.02
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_6vwn4")
+shape = SubResource("CapsuleShape2D_fmdtw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w85lb")
 animation = &"walk_left"
 autoplay = "idle_down"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0

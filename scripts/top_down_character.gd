@@ -66,14 +66,14 @@ func _update_facing_direction():
 	if _last_move_input.is_zero_approx():
 		return
 	var old_facing_direction = _facing_direction
-	if abs(_last_move_input.angle_to(Vector2.UP)) < PI / 2:
-		_facing_direction = Direction.UP
-	elif abs(_last_move_input.angle_to(Vector2.DOWN)) < PI / 2:
-		_facing_direction = Direction.DOWN
-	elif abs(_last_move_input.angle_to(Vector2.LEFT)) < PI / 2:
+	if abs(_last_move_input.angle_to(Vector2.LEFT)) < PI / 2:
 		_facing_direction = Direction.LEFT
 	elif abs(_last_move_input.angle_to(Vector2.RIGHT)) < PI / 2:
 		_facing_direction = Direction.RIGHT
+	elif abs(_last_move_input.angle_to(Vector2.UP)) < PI / 2:
+		_facing_direction = Direction.UP
+	elif abs(_last_move_input.angle_to(Vector2.DOWN)) < PI / 2:
+		_facing_direction = Direction.DOWN
 		
 	if _facing_direction != old_facing_direction:
 		facing_direction_changed.emit(old_facing_direction)
