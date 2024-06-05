@@ -25,6 +25,18 @@ func try_add_grass(global_pos: Vector2):
 		return
 	set_cells_terrain_connect(grass_layer, [coords], terrain_set, grass_terrain)
 
+func try_toggle_grass(global_pos: Vector2):
+	var coords = global_to_map(global_pos)
+	var ground_data = get_cell_tile_data(ground_layer, coords)
+	# there must be ground beneath the grass
+	if ground_data == null:
+		return
+	var grass_data = get_cell_tile_data(grass_layer, coords)
+	if grass_data == null:
+		set_cells_terrain_connect(grass_layer, [coords], terrain_set, grass_terrain)
+	else:
+		set_cells_terrain_connect(grass_layer, [coords], terrain_set, -1)
+
 func global_to_map(global_pos: Vector2) -> Vector2i:
 	return local_to_map(to_local(global_pos))
 

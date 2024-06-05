@@ -47,7 +47,7 @@ func _use_hoe():
 	_sprite.play(_active_anim())
 	_is_performing_action = true
 	await _sprite.animation_finished
-	_terrain.try_add_grass(_get_aim())
+	_terrain.try_toggle_grass(_get_aim())
 	_is_performing_action = false
 	_update_move_animations()
 
