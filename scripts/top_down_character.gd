@@ -10,6 +10,8 @@ class_name TopDownCharacter
 ## Time to decelerate from top speed to rest
 @export var brake_time: float = 0.2
 
+@export var _active: bool = true
+
 signal started_moving()
 signal stopped_moving()
 signal facing_direction_changed(old_facing_direction: Direction)
@@ -49,6 +51,9 @@ func _physics_process(delta: float):
 		stopped_moving.emit()
 
 func _handle_move(delta: float):
+	if !_can_move():
+		_consume_move_input()
+		return
 	var tgt_velocity = _consume_move_input() * max_speed
 	var is_braking = velocity.length_squared() < tgt_velocity.length_squared()
 	var accel_time = brake_time if is_braking else spur_time
@@ -77,3 +82,6 @@ func _update_facing_direction():
 		
 	if _facing_direction != old_facing_direction:
 		facing_direction_changed.emit(old_facing_direction)
+
+func _can_move() -> bool:
+	return _active

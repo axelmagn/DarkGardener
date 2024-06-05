@@ -25,8 +25,14 @@ func try_add_grass(global_pos: Vector2):
 		return
 	set_cells_terrain_connect(grass_layer, [coords], terrain_set, grass_terrain)
 
-func global_to_map(global_pos: Vector2):
+func global_to_map(global_pos: Vector2) -> Vector2i:
 	return local_to_map(to_local(global_pos))
+
+func map_to_global(coord: Vector2i) -> Vector2:
+	return to_global(map_to_local(coord))
+
+func nearest_tile_center(global_pos: Vector2) -> Vector2:
+	return map_to_global(global_to_map(global_pos))
 
 func _get_layer_idx(layer_name: String) -> int:
 	for i in range(get_layers_count()):
