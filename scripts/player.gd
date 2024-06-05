@@ -21,12 +21,13 @@ func _process(_delta: float):
 	var move_dir = horiz_dir * Vector2.RIGHT + vert_dir * Vector2.UP
 	set_move_input(move_dir)
 
+	_update_crosshair()
+
+func _unhandled_input(event: InputEvent):
 	# Handle interact
-	if Input.is_action_just_pressed("interact"):
+	if event.is_action_pressed("interact"):
 		# _terrain.try_add_grass(global_position)
 		_use_hoe()
-
-	_update_crosshair()
 
 func _on_started_moving():
 	_update_move_animations()

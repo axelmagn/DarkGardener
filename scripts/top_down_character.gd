@@ -38,16 +38,17 @@ func set_move_input(move_input: Vector2):
 func _physics_process(delta: float):
 	# capture move transition signals before consuming move input
 	# (they are tougher to figure out once movement is consumed)
-	var will_start_moving = _last_move_input.is_zero_approx() and !_move_input.is_zero_approx()
-	var will_stop_moving = !_last_move_input.is_zero_approx() and _move_input.is_zero_approx()
+	var is_moving_before = !velocity.is_zero_approx()
 
 	_handle_move(delta)
 	_update_facing_direction()
 
+	var is_moving_after = !velocity.is_zero_approx()
+
 	# emit move transition signals
-	if will_start_moving:
+	if not is_moving_before and is_moving_after:
 		started_moving.emit()
-	if will_stop_moving:
+	if is_moving_before and not is_moving_after:
 		stopped_moving.emit()
 
 func _handle_move(delta: float):
