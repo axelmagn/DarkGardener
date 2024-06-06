@@ -746,9 +746,12 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_rsbih")
+tools = null
+active_tool_idx = null
 max_speed = 64.0
 spur_time = 0.05
 brake_time = 0.02
+_active = null
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_fmdtw")
