@@ -4,7 +4,7 @@ const Hoe = preload ("res://scripts/tools/hoe.gd")
 
 signal animation_changed
 
-@export var tools: Array[Tool] = []
+@export var tools: Array[Equipment] = []
 @export var active_tool_idx: int = 0
 
 @onready var _sprite: AnimatedSprite2D = $CharacterSprite

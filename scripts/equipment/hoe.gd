@@ -1,4 +1,4 @@
-class_name Hoe extends Tool
+class_name Hoe extends Equipment
 
 @export var anim_action: String = "hoe"
 
