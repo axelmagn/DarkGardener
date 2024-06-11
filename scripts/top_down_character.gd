@@ -19,6 +19,7 @@ signal facing_direction_changed(old_facing_direction: Direction)
 var _move_input: Vector2 = Vector2.ZERO
 var _last_move_input: Vector2 = Vector2.ZERO
 var _facing_direction: Direction = Direction.DOWN
+var _is_performing_action: bool = false
 
 enum Direction {
   UP = 0,
@@ -41,7 +42,8 @@ func _physics_process(delta: float):
 	var is_moving_before = !velocity.is_zero_approx()
 
 	_handle_move(delta)
-	_update_facing_direction()
+	if not _is_performing_action:
+		_update_facing_direction()
 
 	var is_moving_after = !velocity.is_zero_approx()
 
@@ -72,13 +74,13 @@ func _update_facing_direction():
 	if _last_move_input.is_zero_approx():
 		return
 	var old_facing_direction = _facing_direction
-	if abs(_last_move_input.angle_to(Vector2.LEFT)) < PI / 2:
+	if abs(_last_move_input.angle_to(Vector2.LEFT)) < PI / 4:
 		_facing_direction = Direction.LEFT
-	elif abs(_last_move_input.angle_to(Vector2.RIGHT)) < PI / 2:
+	elif abs(_last_move_input.angle_to(Vector2.RIGHT)) < PI / 4:
 		_facing_direction = Direction.RIGHT
-	elif abs(_last_move_input.angle_to(Vector2.UP)) < PI / 2:
+	elif abs(_last_move_input.angle_to(Vector2.UP)) < PI / 4:
 		_facing_direction = Direction.UP
-	elif abs(_last_move_input.angle_to(Vector2.DOWN)) < PI / 2:
+	elif abs(_last_move_input.angle_to(Vector2.DOWN)) < PI / 4:
 		_facing_direction = Direction.DOWN
 		
 	if _facing_direction != old_facing_direction:

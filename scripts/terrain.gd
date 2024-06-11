@@ -46,6 +46,28 @@ func map_to_global(coord: Vector2i) -> Vector2:
 func nearest_tile_center(global_pos: Vector2) -> Vector2:
 	return map_to_global(global_to_map(global_pos))
 
+func aimed_tile_center(global_pos: Vector2, aim_dir: Vector2) -> Vector2:
+
+	if aim_dir.is_zero_approx():
+		return nearest_tile_center(global_pos)
+
+	var offsets = [
+		Vector2i( - 1, -1), Vector2i( - 1, 0), Vector2i( - 1, 1),
+		Vector2i(0, -1), Vector2i(0, 1),
+		Vector2i(1, -1), Vector2i(1, 0), Vector2i(1, 1),
+		]
+	var max_dot = 0
+	var best_offset = Vector2i.ZERO
+	var aim_norm = aim_dir.normalized()
+	for offset in offsets:
+		var dot = Vector2(offset).normalized().dot(aim_norm)
+		if dot > max_dot:
+			max_dot = dot
+			best_offset = offset
+	var center_coord = global_to_map(global_pos)
+
+	return map_to_global(center_coord + best_offset)
+
 func _get_layer_idx(layer_name: String) -> int:
 	for i in range(get_layers_count()):
 		if layer_name == get_layer_name(i):
