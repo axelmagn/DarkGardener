@@ -1,12 +1,11 @@
 class_name Equipment extends Resource
 
+@export var anim_action: String = "hoe"
+
 var _player: Player = null
 
 func set_player(player: Player):
-	var old_player = _player
 	_player = player
-	if _player != old_player:
-		_on_player_changed(old_player)
 
 func primary_fire():
 	pass
@@ -14,14 +13,11 @@ func primary_fire():
 func secondary_fire():
 	pass
 
-func activate():
-	pass
-
-func deactivate():
-	pass
-
-func _process():
-	pass
-
-func _on_player_changed(old_player: Player):
-	pass
+func _do_animated_effect(do_fn):
+	assert(_player != null)
+	_player.set_is_performing_action(true)
+	_player._update_facing_direction()
+	_player.set_anim_action(self.anim_action)
+	await _player.get_sprite().animation_finished
+	do_fn.call()
+	_player.set_is_performing_action(false)
