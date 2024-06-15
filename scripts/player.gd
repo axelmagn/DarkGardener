@@ -70,7 +70,6 @@ func _ready():
 	if equipment.size() > 0:
 		for t in equipment:
 			t.set_player(self)
-		equipment[equipment_idx].activate()
 
 func _process(_delta: float):
 	# Update move input

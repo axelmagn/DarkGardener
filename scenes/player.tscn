@@ -8,6 +8,7 @@
 [sub_resource type="Resource" id="Resource_dyvjf"]
 script = ExtResource("2_i0ncq")
 anim_action = "hoe"
+icon_coord = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmdtw"]
 radius = 3.5
@@ -631,6 +632,11 @@ animations = [{
 "name": &"idle_up",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m4thf")
@@ -762,7 +768,7 @@ shape = SubResource("CapsuleShape2D_fmdtw")
 [node name="CharacterSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_w85lb")
-animation = &"idle_right"
+animation = &"new_animation"
 autoplay = "idle_down"
 
 [node name="Camera" type="Camera2D" parent="."]
