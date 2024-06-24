@@ -176,7 +176,6 @@ func _update_facing_direction():
 		_facing_direction = Direction.UP
 	elif abs(facing_vec.angle_to(Vector2.DOWN)) < PI / 4:
 		_facing_direction = Direction.DOWN
-	print("facing_vec:", facing_vec, ",", _is_performing_action, ",", _facing_direction)
 		
 	if _facing_direction != old_facing_direction:
 		facing_direction_changed.emit(old_facing_direction)

@@ -1,5 +1,5 @@
-extends TileMap
 class_name Terrain
+extends TileMap
 
 @export var terrain_set: int = 0
 
@@ -7,6 +7,8 @@ class_name Terrain
 @export var grass_layer_name = "00_grass"
 
 @export var grass_terrain_name = "grass"
+
+@onready var crop_manager: CropManager = $CropManager
 
 @onready var grass_layer = _get_layer_idx(grass_layer_name)
 @onready var ground_layer = _get_layer_idx(ground_layer_name)
@@ -79,3 +81,8 @@ func _get_terrain_idx(terrain_name: String) -> int:
 		if terrain_name == tile_set.get_terrain_name(terrain_set, i):
 			return i
 	return (-1)
+
+func is_soil(coord: Vector2i) -> bool:
+	var ground_data = get_cell_tile_data(ground_layer, coord)
+	var grass_data = get_cell_tile_data(grass_layer, coord)
+	return ground_data != null and grass_data == null

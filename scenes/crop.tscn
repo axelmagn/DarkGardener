@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://65vn034naqyg"]
+
+[ext_resource type="Script" path="res://scripts/crop.gd" id="1_it5cl"]
+[ext_resource type="Texture2D" uid="uid://ddp4bw40n0hcy" path="res://assets/third_party/Sprout Lands - Sprites - premium pack/Objects/Farming Plants.png" id="1_oip2m"]
+
+[node name="Crop" type="Node2D"]
+script = ExtResource("1_it5cl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oip2m")
+region_enabled = true
+region_rect = Rect2(16, 16, 16, 16)

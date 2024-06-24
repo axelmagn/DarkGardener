@@ -1,10 +1,11 @@
-[gd_scene load_steps=106 format=3 uid="uid://c0fqvibyqmefm"]
+[gd_scene load_steps=107 format=3 uid="uid://c0fqvibyqmefm"]
 
 [ext_resource type="Texture2D" uid="uid://bvl4rxj7ctia8" path="res://assets/third_party/Sprout Lands - Sprites - premium pack/Characters/Premium Charakter Spritesheet.png" id="1_6284q"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rsbih"]
 [ext_resource type="Script" path="res://scripts/equipment/hoe.gd" id="2_i0ncq"]
 [ext_resource type="Texture2D" uid="uid://dxqip701pfhql" path="res://assets/third_party/Crosshair Pack/PNG/White Retina/crosshair025.png" id="3_2o3s8"]
 [ext_resource type="Script" path="res://scripts/equipment/seed.gd" id="3_4qug3"]
+[ext_resource type="PackedScene" uid="uid://65vn034naqyg" path="res://scenes/crop.tscn" id="3_qamd6"]
 
 [sub_resource type="Resource" id="Resource_dyvjf"]
 script = ExtResource("2_i0ncq")
@@ -13,6 +14,7 @@ icon_coord = null
 
 [sub_resource type="Resource" id="Resource_4ld28"]
 script = ExtResource("3_4qug3")
+crop_scene = ExtResource("3_qamd6")
 icon_coord = Vector2i(0, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmdtw"]
